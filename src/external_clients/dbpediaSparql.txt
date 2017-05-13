@@ -1,0 +1,15 @@
+http://stackoverflow.com/questions/37801673/sparql-query-against-dbpedia-using-java
+https://dbpedia.org/sparql?nsdecl
+
+/***********************************/
+http://dbpedia.org/sparql
+select distinct ?resource ?birthDate where {?resource rdfs:label 'Barack Obama'@en. ?resource dbo:birthDate ?birthDate. }
+/***********************************/
+
+//Embedded server
+https://jena.apache.org/documentation/fuseki2/fuseki-embedded.html
+
+/************************************/
+ INFO 2017-05-13 11:09:41,664 main [DBpediaSpotlightClientDB] - Extracted entities from 1535345 text items, with 1410630 successes and 124715 errors.
+ INFO 2017-05-13 11:09:41,664 main [DBpediaSpotlightClientDB] - Average extraction time: 1.2620507130319245E9 ms
+/***********************************/
