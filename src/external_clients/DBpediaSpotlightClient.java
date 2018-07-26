@@ -1,5 +1,6 @@
 package external_clients;
 
+
 /**
  * Copyright 2011 Pablo Mendes, Max Jakob
  *
@@ -16,7 +17,6 @@ package external_clients;
  * limitations under the License.
  */
 
-
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.dbpedia.spotlight.exceptions.AnnotationException;
@@ -26,13 +26,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Scanner;
+
 
 /**
  * Simple web service-based annotation client for DBpedia Spotlight.
@@ -50,13 +49,14 @@ public class DBpediaSpotlightClient extends AnnotationClient {
 	
     //private final static String API_URL = "http://spotlight.dbpedia.org/";
 
-	private static final double CONFIDENCE = 0.3;
+	//private static final double CONFIDENCE = 0.5; //0001 with this conf, rest - with 0.6
+	private static final double CONFIDENCE = 0.6;
+
 	private static final int SUPPORT = 0;
 
-	@Override
 	public HashMap<String, DBpediaResource> extract(Text text) throws AnnotationException {
 
-        LOG.info("Querying API.");
+//        LOG.info("Querying API.");
 		String spotlightResponse;
 		try {
 			GetMethod getMethod = new GetMethod(API_URL + "rest/annotate/?" +
@@ -111,28 +111,20 @@ public class DBpediaSpotlightClient extends AnnotationClient {
 
 		return resourcesMap;
 	}
+	
+	
         public static void main(String[] args) throws Exception {
 
 
         DBpediaSpotlightClient c = new DBpediaSpotlightClient ();
-
-//        File input = new File("/home/pablo/eval/manual/AnnotationText.txt");
-//        File output = new File("/home/pablo/eval/manual/systems/Spotlight.list");
-
-        //File input = new File("/home/pablo/eval/cucerzan/cucerzan.txt");
-        //File output = new File("/home/pablo/eval/cucerzan/systems/cucerzan-Spotlight.set");
-
-//        File input = new File("/home/pablo/eval/wikify/gold/WikifyAllInOne.txt");
-//        File output = new File("/home/pablo/eval/wikify/systems/Spotlight.list");
-
-//        File input = new File("/home/dinara/word2vec/word2vec_gensim_ODP/text_files_for_training/allPagesODP.txt");
-        File input = new File("/home/dinara/java-projects/dbpedia_spotlight/dbpedia_spotlight_test_files/test_1.txt");
-
-        File output = new File("/home/dinara/java-projects/dbpedia_spotlight/dbpedia_spotlight_test_files/kkk.txt");
-
+           
+//        c.evaluate();
         
-        c.evaluate(input, output);
-
+        
+        Scanner sc = new Scanner(System.in);
+        int start_doc = sc.nextInt();
+        int end_doc = sc.nextInt();
+        c.evaluate(start_doc, end_doc);
 
 //        SpotlightClient c = new SpotlightClient(api_key);
 //        List<DBpediaResource> response = c.extract(new Text(text));

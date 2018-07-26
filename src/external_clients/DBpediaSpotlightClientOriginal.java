@@ -61,10 +61,12 @@ public class DBpediaSpotlightClientOriginal extends AnnotationClientOriginal {
         LOG.info("Querying API.");
 		String spotlightResponse;
 		try {
-			GetMethod getMethod = new GetMethod(API_URL + "rest/annotate/?" +
-					"confidence=" + CONFIDENCE
-					+ "&support=" + SUPPORT
-					+ "&text=" + URLEncoder.encode(text.text(), "utf-8"));
+			GetMethod getMethod = new GetMethod(API_URL + "rest/annotate?" +
+	                "confidence=" + CONFIDENCE
+	                + "&support=" + SUPPORT
+	                + "&text=" + URLEncoder.encode(text.text(), "utf-8"));
+
+			
 			getMethod.addRequestHeader(new Header("Accept", "application/json"));
 
 			spotlightResponse = request(getMethod);
@@ -127,8 +129,8 @@ public class DBpediaSpotlightClientOriginal extends AnnotationClientOriginal {
 
 //        File input = new File("/home/dinara/java-projects/dbpedia_spotlight/dbpedia_spotlight_test_files/testJSON/test_falkirk_clyde_crawl.txt");
 //        File output = new File("/home/dinara/java-projects/dbpedia_spotlight/dbpedia_spotlight_test_files/testJSON/test_falkirk_clyde_crawl_res.txt");
-        File input = new File("/home/dinara/java-projects/dbpedia_spotlight/dbpedia_spotlight_test_files/test_1.txt");
-        File output = new File("/home/dinara/java-projects/dbpedia_spotlight/dbpedia_spotlight_test_files/kkk.txt");
+        File input = new File("/home/dinara/java-projects/dbpedia_spotlight/dbpedia_spotlight_test_files/test_conf.txt");
+        File output = new File("/home/dinara/java-projects/dbpedia_spotlight/test-confidence/dbp-conf0.4news.en-0000-of-00100.txt");
         
         c.evaluate(input, output);
 
