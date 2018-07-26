@@ -36,7 +36,6 @@ import java.util.Scanner;
 /**
  * Simple web service-based annotation client for DBpedia Spotlight.
  *
- * @author pablomendes, Joachim Daiber
  */
 
 public class DBpediaSpotlightClient extends AnnotationClient {

@@ -29,12 +29,6 @@ import java.net.URLEncoder;
 import java.text.ParseException;
 import java.util.HashMap;
 
-/**
- * This class has been translate to scala. Please use the AnnotationClientScala.scala for new External Clients!
- * (AnnotationClientScala.scala is at eval/src/main/scala/org/dbpedia/spotlight/evaluation/external/)
- *
- * @author pablomendes
- */
 
 public abstract class AnnotationClient {
 
